@@ -1,9 +1,13 @@
-<div style="background-color:blueviolet;" class="row">
-    <div style="background-color: aqua;" class="col-md-5">
-<app-recipe-list></app-recipe-list>
+<div  class="row">
+    <div  class="col-md-5">
+<app-recipe-list (recipeEvent) = "recipeDataa = $event"></app-recipe-list>
     </div>
 
-    <div style="background-color:red;" class="col-md-7">
-        <app-recipe-detail></app-recipe-detail>
+    <div  class="col-md-7">
+        <app-recipe-detail [recipeData]="recipeDataa" *ngIf="recipeDataa; else infoTxt"></app-recipe-detail>
+
+        <ng-template #infoTxt>
+            <p>Please Select A Recipe</p>
+        </ng-template>
     </div>
 </div>
